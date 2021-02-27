@@ -1,0 +1,38 @@
+.app {
+  max-width: 500px;
+  margin: auto;
+  font-family: sans-serif;
+}
+
+.header__logo {
+  display: block;
+  width: 96px;
+}
+
+.clock {
+  padding: 15px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+}
+
+.app__clock { margin-bottom: 10px; }
+
+.app__lots {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.lot {
+  padding: 15px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+}
+
+.lot__name { margin-top: 0; }
+
+.lot__price {
+  float: right;
+  font-size: 1.125rem;
+}
+
+.lot__description { margin-bottom: 0; }
