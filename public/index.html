@@ -7,36 +7,94 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="app">
-  <header class="header">
-    <img class="header__logo" src="logo.png" alt="">
-  </header>
 
-  <h1>What is React?</h1>
+<div class="root"></div>
 
-  <div class="clock app__clock">
-    12:11:20 PM
-  </div>
+<script>
 
-  <section class="app__lots">
-    <article class="lot">
-      <div class="lot__price">16</div>
-      <h2 class="lot__name">Apple</h2>
-      <p class="lot__description">Apple description</p>
-    </article>
+  const state = {
+    time: new Date(),
+    lots: [
+      {
+        id: 1,
+        name: 'Apple',
+        description: 'Apple description',
+        price: 16,
+      },
+      {
+        id: 2,
+        name: 'Orange',
+        description: 'Orange description',
+        price: 26,
+      },
+      {
+        id: 3,
+        name: 'Banana',
+        description: 'Banana description',
+        price: 19,
+      },
+    ],
+  }
 
-    <article class="lot">
-      <div class="lot__price">26</div>
-      <h2 class="lot__name">Orange</h2>
-      <p class="lot__description">Orange description</p>
-    </article>
+  const app = document.createElement('div');
+  app.className = 'app'
 
-    <article class="lot">
-      <div class="lot__price">19</div>
-      <h2 class="lot__name">Banana</h2>
-      <p class="lot__description">Banana description</p>
-    </article>
-  </section>
-</div>
+  const header = document.createElement('header')
+  header.className = 'header'
+
+  const logo = document.createElement('img')
+  logo.className = 'header__logo'
+  logo.src = 'logo.png'
+  logo.alt = ''
+
+  header.append(logo)
+
+  app.append(header)
+
+  const heading = document.createElement('h1')
+  heading.innerText = 'What is React?'
+
+  app.append(heading)
+
+  const clock = document.createElement('div')
+  clock.className = 'clock app__clock'
+  clock.innerText = state.time.toLocaleTimeString()
+
+  app.append(clock)
+
+  const lots = document.createElement('section')
+  lots.className = 'app__lots'
+
+  state.lots.forEach(lot => {
+    const node = document.createElement('article')
+    node.className = 'lot'
+
+    const price = document.createElement('div')
+    price.className = 'lot__price'
+    price.innerText = lot.price
+
+    node.append(price)
+
+    const name = document.createElement('h2')
+    name.className = 'lot__name'
+    name.innerText = lot.name
+
+    node.append(name)
+
+    const description = document.createElement('p')
+    description.className = 'lot__description'
+    description.innerText = lot.description
+
+    node.append(description)
+
+    lots.append(node)
+  })
+
+  app.append(lots)
+
+  const domRoot = document.querySelector('.root')
+  domRoot.append(app)
+
+</script>
 </body>
 </html>
