@@ -36,36 +36,52 @@
     ],
   }
 
-  const app = document.createElement('div');
-  app.className = 'app'
+  function App ({ state }) {
+    const node = document.createElement('div');
+    node.className = 'app'
 
-  const header = document.createElement('header')
-  header.className = 'header'
+    node.append(Header())
+    const heading = document.createElement('h1')
+    heading.innerText = 'What is React?'
+    node.append(heading)
+    node.append(Clock({ time: state.time }))
+    node.append(Lots({ lots: state.lots }))
 
-  const logo = document.createElement('img')
-  logo.className = 'header__logo'
-  logo.src = 'logo.png'
-  logo.alt = ''
+    return node
+  }
 
-  header.append(logo)
+  function Header () {
+    const node = document.createElement('header')
+    node.className = 'header'
+    node.append(Logo())
+    return node
+  }
 
-  app.append(header)
+  function Logo () {
+    const node = document.createElement('img')
+    node.className = 'header__logo'
+    node.src = 'logo.png'
+    node.alt = ''
+    return node
+  }
 
-  const heading = document.createElement('h1')
-  heading.innerText = 'What is React?'
+  function Clock ({ time }) {
+    const node = document.createElement('div')
+    node.className = 'clock app__clock'
+    node.innerText = time.toLocaleTimeString()
+    return node
+  }
 
-  app.append(heading)
+  function Lots ({ lots }) {
+    const node = document.createElement('section')
+    node.className = 'app__lots'
+    lots.forEach(lot => {
+      node.append(Lot({ lot }))
+    })
+    return node
+  }
 
-  const clock = document.createElement('div')
-  clock.className = 'clock app__clock'
-  clock.innerText = state.time.toLocaleTimeString()
-
-  app.append(clock)
-
-  const lots = document.createElement('section')
-  lots.className = 'app__lots'
-
-  state.lots.forEach(lot => {
+  function Lot ({ lot }) {
     const node = document.createElement('article')
     node.className = 'lot'
 
@@ -87,13 +103,13 @@
 
     node.append(description)
 
-    lots.append(node)
-  })
+    return node
+  }
 
-  app.append(lots)
+  const newDom = App({ state })
+  const realDomRoot = document.querySelector('.root')
 
-  const domRoot = document.querySelector('.root')
-  domRoot.append(app)
+  realDomRoot.append(newDom)
 
 </script>
 </body>
