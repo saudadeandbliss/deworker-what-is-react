@@ -106,10 +106,14 @@
     return node
   }
 
-  const newDom = App({ state })
-  const realDomRoot = document.querySelector('.root')
+  render(
+    App({ state }),
+    document.querySelector('.root')
+  )
 
-  realDomRoot.append(newDom)
+  function render (newDom, realDomRoot) {
+    realDomRoot.append(newDom)
+  }
 
 </script>
 </body>
