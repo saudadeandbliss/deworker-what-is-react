@@ -10,10 +10,24 @@
 }
 
 .clock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 15px;
   border: 1px solid #dddddd;
   border-radius: 6px;
 }
+
+.clock__icon {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.clock__icon--time--day { background-color: #ef7b00; }
+
+.clock__icon--time--night { background-color: #2459a7; }
 
 .app__clock { margin-bottom: 10px; }
 
@@ -36,3 +50,10 @@
 }
 
 .lot__description { margin-bottom: 0; }
+
+.loading {
+  padding: 15px;
+  text-align: center;
+  background-color: #eeeeee;
+  border-radius: 6px;
+}
