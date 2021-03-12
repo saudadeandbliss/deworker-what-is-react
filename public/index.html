@@ -14,26 +14,7 @@
 
   let state = {
     time: new Date(),
-    lots: [
-      {
-        id: 1,
-        name: 'Apple',
-        description: 'Apple description',
-        price: 16,
-      },
-      {
-        id: 2,
-        name: 'Orange',
-        description: 'Orange description',
-        price: 26,
-      },
-      {
-        id: 3,
-        name: 'Banana',
-        description: 'Banana description',
-        price: 19,
-      },
-    ],
+    lots: null,
   }
 
   function App ({ state }) {
@@ -89,6 +70,12 @@
   }
 
   function Lots ({ lots }) {
+    if (lots === null) {
+      const node = document.createElement('div')
+      node.className = 'loading'
+      node.innerHTML = 'Loading...'
+      return node
+    }
     const node = document.createElement('section')
     node.className = 'app__lots'
     lots.forEach(lot => {
