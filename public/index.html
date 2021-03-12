@@ -122,22 +122,23 @@
     return node
   }
 
+  function renderView (state) {
+    render(
+      App({ state }),
+      document.querySelector('.root'),
+    )
+  }
+
+  renderView(state)
+
   setInterval(() => {
     state = {
       ...state,
       time: new Date(),
     }
 
-    render(
-      App({ state }),
-      document.querySelector('.root'),
-    )
+    renderView(state)
   }, 1000)
-
-  render(
-    App({ state }),
-    document.querySelector('.root')
-  )
 
   function render (newDom, realDomRoot) {
     realDomRoot.innerHTML = ''
