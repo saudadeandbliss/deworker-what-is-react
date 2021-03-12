@@ -128,11 +128,10 @@
       time: new Date(),
     }
 
-    const newApp = App({ state })
-
-    const root = document.querySelector('.root')
-    root.innerHTML = ''
-    root.append(newApp)
+    render(
+      App({ state }),
+      document.querySelector('.root'),
+    )
   }, 1000)
 
   render(
@@ -141,6 +140,7 @@
   )
 
   function render (newDom, realDomRoot) {
+    realDomRoot.innerHTML = ''
     realDomRoot.append(newDom)
   }
 
