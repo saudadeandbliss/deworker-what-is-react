@@ -31,6 +31,14 @@
     return node
   }
 
+  function Loading () {
+    const node = document.createElement('div')
+    node.className = 'loading'
+    node.innerHTML = 'Loading...'
+
+    return node
+  }
+
   function Header () {
     const node = document.createElement('header')
     node.className = 'header'
@@ -71,10 +79,7 @@
 
   function Lots ({ lots }) {
     if (lots === null) {
-      const node = document.createElement('div')
-      node.className = 'loading'
-      node.innerHTML = 'Loading...'
-      return node
+      return Loading()
     }
     const node = document.createElement('section')
     node.className = 'app__lots'
