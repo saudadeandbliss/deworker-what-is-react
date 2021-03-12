@@ -106,6 +106,14 @@
     return node
   }
 
+  setInterval(() => {
+    const time = new Date()
+
+    const clock = document.querySelector('.root').querySelector('.app > .clock')
+
+    clock.innerText = time.toLocaleTimeString()
+  }, 1000)
+
   render(
     App({ state }),
     document.querySelector('.root')
