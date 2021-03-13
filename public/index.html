@@ -12,6 +12,43 @@
 
 <script>
 
+  const api = {
+    get (url) {
+      switch (url) {
+        case '/lots':
+          setTimeout(() => {
+
+          }, 1000)
+          return new Promise(resolve => {
+            setTimeout(() => {
+              resolve([
+                {
+                  id: 1,
+                  name: 'Apple',
+                  description: 'Apple description',
+                  price: 16,
+                },
+                {
+                  id: 2,
+                  name: 'Orange',
+                  description: 'Orange description',
+                  price: 26,
+                },
+                {
+                  id: 3,
+                  name: 'Banana',
+                  description: 'Banana description',
+                  price: 19,
+                },
+              ])
+            }, 1000)
+          })
+        default:
+          throw new Error('Unknown address')
+      }
+    }
+  }
+
   let state = {
     time: new Date(),
     lots: null,
@@ -131,6 +168,14 @@
 
     renderView(state)
   }, 1000)
+
+  api.get('/lots').then(lots => {
+    state = {
+      ...state,
+      lots,
+    }
+    renderView(state)
+  })
 
   function render (newDom, realDomRoot) {
     realDomRoot.innerHTML = ''
