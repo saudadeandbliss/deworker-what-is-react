@@ -175,6 +175,19 @@
       lots,
     }
     renderView(state)
+
+    setInterval(() => {
+      state = {
+        ...state,
+        lots: state.lots.map(lot => {
+          return {
+            ...lot,
+            price: Math.round((Math.random() * 10 + 20)),
+          }
+        })
+      }
+      renderView(state)
+    }, 500)
   })
 
   function render (newDom, realDomRoot) {
